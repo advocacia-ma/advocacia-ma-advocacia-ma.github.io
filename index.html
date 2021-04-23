@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
@@ -62,10 +63,8 @@
 						<h2>Entre em contato</h2>
 						<p>Preencha o formulario abaixo, ou entre em contato <a href="https://api.whatsapp.com/send?phone=5519991504738">pelo WhatsApp</a></p>
 					</div>
-					<!-- TODO Make this work -->
 					<form>
 						<input id="name" placeholder="Nome" name/>
-						<input type="email" id="email" placeholder="E-Mail" name="email"/>
 						<br/>
 						<input id="cel" placeholder="Celular (WhatsApp)" name="cel"/>
 						<br/>
@@ -84,7 +83,7 @@
 						<input type="radio" id="locacao" name="lookfor" value="locacao"/>
 						<label for="locacao">Locação</label>
 						<br/>
-						<textarea name="desc" cols="44" rows="8" placeholder="Descreva seu caso aqui"></textarea>
+						<textarea id="desc" name="desc" cols="44" rows="8" placeholder="Descreva seu caso aqui"></textarea>
 						<br/>
 						<label>Como prefere ser contatado?</label>
 						<br/>
@@ -97,7 +96,7 @@
 						<input type="checkbox" id="whatsapp" name="manner" value="WhatsApp">
 						<label for="whatsapp">WhatsApp</label>
 						<br/>
-						<input type="submit" value="Enviar"/>
+						<input type="submit" value="Enviar" id="sendhelp"/>
 					</form>
 				</section>
 				<!-- TODO Restrict the API key -->
@@ -116,14 +115,61 @@
 		<!-- Hilarious workaround for a laughable Blink bug -->
 		<script> </script>
 		<script>
-			function navMenu() {
-				var x = document.getElementsByTagName("nav")[0];
-				if (x.className === "topnav") {
-					x.className += " responsive";
-				} else {
-					x.className = "topnav";
-				}
-			}
+		  function navMenu() {
+		      let x = document.getElementsByTagName("nav")[0];
+		      if (x.className === "topnav") {
+			  x.className += " responsive";
+		      } else {
+			  x.className = "topnav";
+		      }
+		  }
+
+		  function sendEmail(target, subject, msg) {
+		      let mailUri = new URL(`mailto:${target}`);
+		      mailUri.searchParams.append("subject", subject);
+		      mailUri.searchParams.append("body", msg);
+		      window.location.href = mailUri;
+		  }
+
+		  function sendHelp() {
+		      let text = (a) => document.getElementById(a).value;
+		      let checkedRadio = (a) => Array
+			  .from(document.getElementsByName(a))
+		          .filter((i) => i.checked)[0];
+
+		      let name = text("name")
+		      let cel = text("cel")
+		      let lookingfor = checkedRadio("lookfor")
+		      let body = text("desc")
+		      let contactpref = Array
+			  .from(document.getElementsByName("manner"))
+		          .filter((i) => i.checked);
+
+		      if(!name || !desc)
+		      {
+			  alert("Favor completar as partes necessarias do formulario.");
+			  return;
+		      }
+
+		      let msg = "";
+		      msg += `Nome: ${name}\n`;
+		      if(cel)
+			  msg += `No. Celular: ${cel}\n`;
+		      if(lookingfor)
+			  msg += `Procurando por: ${lookingfor.value}\n`
+		      if(contactpref)
+		      {
+			  contactpref = contactpref
+			      .map((i) => i.value)
+			      .join(", ");
+			  msg += `Preferencia de contato: ${contactpref}\n`;
+		      }
+		      msg += `\n${body}\n`;
+
+		      sendEmail("faleconosco@advocaciamarceloantonio.com.br", name, msg);
+		  }
+
+		  document.getElementById("sendhelp").addEventListener("click", sendHelp);
 		</script>
 	</body>
 </html>

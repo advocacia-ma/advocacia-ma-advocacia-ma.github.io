@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="res/fa/css/all.css">
+		<link rel="stylesheet" href="res/reset.css">
+		<link rel="stylesheet" href="res/main.css">
+		<title>Marcelo Antônio Sociedade Individual de Advocacia</title>
+	</head>
+	<body>
+		<header class="container">
+			<!-- TODO Make this "responsive" -->
+			<img id="logo" class="blueimg" alt="Marcelo Antônio" src="res/malogo_NameOnly.svg"/>
+			<nav>
+				<a href="#about">Quem Somos?</a>
+				<a href="#clients">Nossos Clientes</a>
+				<a href="#contact">Fale Conosco</a>
+				<a href="#location">Contatos e localização</a>
+				<a href="javascript:void(0);" class="icon" onclick="navMenu()">
+					<i class="fa fa-bars"></i>
+				</a>
+			</nav>
+			<div id="socialmedia">
+				<a href="https://www.facebook.com/marceloadvcps/"><i class="fab fa-facebook-square"></i></a>
+				<a href="https://api.whatsapp.com/send?phone=5519991504738"><i class="fab fa-whatsapp-square"></i></a>
+				<a href="https://www.instagram.com/marceloantonioadv/"><i class="fab fa-instagram-square"></i></a>
+			</div>
+		</header>
+		<div id="main">
+			<section id="banner" class="inverted stricter container" style="font-weight: normal">
+				<h1 style="text-align: justify">Exercendo a Advocacia buscando a <b>MELHOR</b> e mais <b>ADEQUADA</b> solução para <b>CADA CLIENTE.</b></h1>
+				<button class="inverted" onclick="location.href='#about'" type="button">Saiba Mais</button>
+			</section>
+			<section id="about" class="inverted strict container">
+				<img class="circle item" src="res/marcelo.jpg" alt="Marcelo Antônio"/>
+				<div class="item" style="flex-basis: 52vw">
+					<h2>Sobre nós</h2>
+					<p>Titular da Marcelo Antônio Sociedade Individual de Advocacia, inscrita na OAB/SP sob n.º 133.242, Marcelo Antônio graduou-se pela Universidade São Francisco, especialista em Advocacia Trabalhista com Pós Graduada Lato Senso pela Universidade Anhanguera-Uniderp.</p>
+					<p>Foi procurador do Município de Águas de São Pedro e atua em Campinas e região há mais de 25 anos, buscando sempre excelência, qualidade e transparência na relação com seus clientes.</p>
+					<p>Atualmente atua em direito civil, empresarial, condominal, consumerista, imobiliário, direito do trabalho e direito de família.</p>
+				</div>
+			</section>
+			<!-- TODO Hide this when there's no Javascript -->
+			<section id="clients" class="inverted blue1 strict centered container">
+				<noscript>
+					<p style="margin: 6em; color: var(--blue-3)">Favor habilitar Javascript em seu navegador caso queira ver avaliações do Google</p>
+				</noscript>
+				<div>
+					<!-- TODO Make this actually work -->
+					<h2>Veja o que nossos clientes tem a dizer:</h2>
+					<p>Me parece que não temos nenhuma avaliação
+					<br/>
+					<!-- TODO Make this a link -->
+					<a>Seja o primeiro a nos avaliar!</a></p>
+				</div>
+			</section>
+			<div class="centered container" style="padding: 2vw">
+				<section id="contact" class="vertical left-align container item">
+					<div>
+						<h2>Entre em contato</h2>
+						<p>Preencha o formulario abaixo, ou entre em contato <a href="https://api.whatsapp.com/send?phone=5519991504738">pelo WhatsApp</a></p>
+					</div>
+					<!-- TODO Make this work -->
+					<form>
+						<input id="name" placeholder="Nome" name/>
+						<input type="email" id="email" placeholder="E-Mail" name="email"/>
+						<br/>
+						<input id="cel" placeholder="Celular (WhatsApp)" name="cel"/>
+						<br/>
+						<input type="radio" id="civel" name="lookfor" value="civel"/>
+						<label for="civel">Cível</label>
+						<br/>
+						<input type="radio" id="trabalhista" name="lookfor" value="trabalhista"/>
+						<label for="trabalhista">Trabalhista</label>
+						<br/>
+						<input type="radio" id="administrativo" name="lookfor" value="administrativo"/>
+						<label for="administrativo">Administrativo</label>
+						<br/>
+						<input type="radio" id="extrajudicial" name="lookfor" value="extrajudicial"/>
+						<label for="extrajudicial">Extrajudicial</label>
+						<br/>
+						<input type="radio" id="locacao" name="lookfor" value="locacao"/>
+						<label for="locacao">Locação</label>
+						<br/>
+						<textarea name="desc" cols="44" rows="8" placeholder="Descreva seu caso aqui"></textarea>
+						<br/>
+						<label>Como prefere ser contatado?</label>
+						<br/>
+						<input type="checkbox" id="email" name="manner" value="E-Mail">
+						<label for="email">E-Mail</label>
+						<br/>
+						<input type="checkbox" id="telephone" name="manner" value="Telefone">
+						<label for="telephone">Telefone</label>
+						<br/>
+						<input type="checkbox" id="whatsapp" name="manner" value="WhatsApp">
+						<label for="whatsapp">WhatsApp</label>
+						<br/>
+						<input type="submit" value="Enviar"/>
+					</form>
+				</section>
+				<!-- TODO Restrict the API key -->
+				<section id="location" class="item">
+					<div class="left-align">
+						<p><b>Celular (WhatsApp):</b></br>(19) 991504738</p>
+						<p><b>Endereço:</b></br>Rua Jacob Bereck Steinberg, 111 - Jardim Chapadão,</br>Campinas - SP, 13070-013, Brasil</p>
+					</div>
+					<iframe width="480" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJwdwAqQXHyJQR0qhzoPktb3I&key=AIzaSyDxR0jSBH9C9IaLkNV70eZFpTGC-MK1EDQ" allowfullscreen></iframe>
+				</section>
+			</div>
+		</div>
+		<footer class="inverted">
+			© 2020 Marcelo Antônio Sociedade Individual de Advocacia - Todos os direitos reservados
+		</footer>
+		<!-- Hilarious workaround for a laughable Blink bug -->
+		<script> </script>
+		<script>
+			function navMenu() {
+				var x = document.getElementsByTagName("nav")[0];
+				if (x.className === "topnav") {
+					x.className += " responsive";
+				} else {
+					x.className = "topnav";
+				}
+			}
+		</script>
+	</body>
+</html>
